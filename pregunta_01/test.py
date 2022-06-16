@@ -4,8 +4,13 @@ import os
 from os.path import dirname
 
 module_path = dirname(__file__)
-os.chdir(module_path)
 
+# os.chdir(module_path)
+
+os.path.dirname(os.path.abspath(__file__))
+
+
+# print(module_path)
 expected = [
     "B,6",
     "C,2",
@@ -13,12 +18,13 @@ expected = [
     "E,2",
 ]
 
-if os.path.isdir("output"):
-    os.system("rm -rf output")
+# if os.path.isdir("output"):
+#     print("es directorio")
+#     os.system("rm -rf output")
 
-os.system("docker run -v $PWD:/workspace jdvelasq/pig:classroom")
+# os.system("docker run -v $PWD:/workspace jdvelasq/pig:classroom")
 
-assert os.path.isdir("output") is True
+# assert os.path.isdir("output") is True
 
 result = []
 with fileinput.input(files=glob.glob("output/*")) as f:
